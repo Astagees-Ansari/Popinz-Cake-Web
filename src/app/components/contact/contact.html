@@ -1,0 +1,76 @@
+<div class="contact-page">
+    <!-- Navbar (Simplified/Sticky) -->
+    <nav class="simple-nav">
+        <div class="nav-content">
+            <div class="brand" routerLink="/home">
+                <img src="logo.png" alt="Logo">
+                <span>Cake Bakers & Academy</span>
+            </div>
+            <a routerLink="/home" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </nav>
+
+    <div class="contact-container">
+        <div class="contact-card scroll-animate">
+            <div class="contact-header">
+                <h1>Sweet Connections </h1>
+                <p>Have a question about our courses? Let's talk over a virtual slice of cake!</p>
+            </div>
+
+            @if (!isSubmitted) {
+            <form class="contact-form" (ngSubmit)="submitForm()">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Your Name</label>
+                    <input type="text" name="name" [(ngModel)]="formData.name" placeholder="E.g. Rahul Sharma" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email Address</label>
+                        <input type="email" name="email" [(ngModel)]="formData.email" placeholder="rahul@example.com"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Phone Number</label>
+                        <input type="tel" name="phone" [(ngModel)]="formData.phone" placeholder="+91 XXXXX XXXXX"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-comment-dots"></i> Your Baking Query</label>
+                    <textarea name="query" [(ngModel)]="formData.query" rows="4"
+                        placeholder="How can we help you bake today?" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span>Send Sweet Message</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+            } @else {
+            <div class="success-message animate-pop">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Thank You, {{ formData.name }}!</h2>
+                <p>We Have Received Your Delicious Message...!</p>
+                <div class="highlight-box">
+                    <p>We Will Contact You As Soon As Possible...!!!</p>
+                </div>
+                <button class="back-btn" routerLink="/home">Return to Home</button>
+            </div>
+            }
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="deco-cake-1">🍰</div>
+        <div class="deco-cake-2">🎂</div>
+        <div class="deco-cake-3">🧁</div>
+    </div>
+
+    <!-- Simple Footer -->
+    <footer>
+        <p>&copy; 2024 Popinz Cake Bakers & Academy | Handcrafted with ❤️ by Data Matex Team.</p>
+    </footer>
+</div>

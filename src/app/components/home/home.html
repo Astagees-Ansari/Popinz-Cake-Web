@@ -1,0 +1,265 @@
+<nav class="navbar">
+    <div class="navbar-container">
+        <!-- Left side: Logo and Brand Name -->
+        <div class="navbar-brand">
+            <img src="logo.png" alt="Popinz Logo" class="navbar-logo">
+            <span class="brand-text">Cake Bakers & Academy</span>
+        </div>
+
+        <!-- Hamburger Menu Icon (Mobile) -->
+        <button class="hamburger-menu" (click)="toggleMenu()" [class.active]="isMenuOpen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Right side: Navigation Links -->
+        <div class="navbar-links" [class.active]="isMenuOpen">
+            <a href="#home" class="nav-link" (click)="closeMenu()">Home</a>
+            <a href="#about" class="nav-link" (click)="closeMenu()">About Us</a>
+            <a href="#courses" class="nav-link" (click)="closeMenu()">Courses</a>
+            <a routerLink="/contact" class="nav-link" (click)="closeMenu()">Contact Us</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1 class="hero-title">Learn the Art of Cake Making</h1>
+            <p class="hero-subtitle">Transform your passion into profession with expert guidance from professional cake
+                educators</p>
+            <button class="cta-button">
+                <span class="btn-text-main">Join Now</span>
+                <span class="btn-text-hover">Grab Your Whisk! 🍰</span>
+            </button>
+        </div>
+        <div class="hero-image">
+            <img src="hero-image.png" alt="Cake Educator Teaching Students">
+        </div>
+    </div>
+</section>
+
+<!-- About Us Section -->
+<section class="about-section" id="about">
+    <div class="about-container">
+        <div class="about-content scroll-animate">
+            <h2 class="about-title">About Us</h2>
+            <p class="about-text">
+                Welcome to <strong>Cake Bakers & Academy</strong>, where passion meets perfection! We are dedicated to
+                nurturing aspiring bakers and cake artists through comprehensive training programs led by industry
+                experts.
+            </p>
+            <p class="about-text">
+                With years of experience in the baking industry, our academy has successfully trained hundreds of
+                students who have gone on to establish their own successful bakery businesses and careers.
+            </p>
+            <p class="about-text">
+                Our hands-on approach ensures that every student receives personalized attention and practical
+                experience in creating stunning cakes, from basic techniques to advanced decorating skills.
+            </p>
+        </div>
+        <div class="about-stats scroll-animate">
+            <div class="stat-card">
+                <h3 class="stat-number" data-target="500">0</h3>
+                <p class="stat-label">Students Trained</p>
+            </div>
+            <div class="stat-card">
+                <h3 class="stat-number" data-target="10">0</h3>
+                <p class="stat-label">Years Experience</p>
+            </div>
+            <div class="stat-card">
+                <h3 class="stat-number" data-target="50">0</h3>
+                <p class="stat-label">Courses Offered</p>
+            </div>
+        </div>
+
+        <!-- Decorative Cake Images -->
+        <img src="cake.png" alt="Decorative Cake" class="decorative-cake cake-left">
+        <img src="cupcake.png" alt="Decorative Cupcake" class="decorative-cake cake-right">
+    </div>
+</section>
+
+<!-- Courses Section -->
+<section class="courses-section scroll-animate" id="courses">
+    <div class="courses-container">
+        <h2 class="section-title">Exclusive Premium Courses</h2>
+        <p class="section-subtitle">Unlock your potential with our expert-led masterclasses</p>
+
+        <!-- Mastery Benefits Grid -->
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-infinity"></i></div>
+                <h4>Lifetime Access</h4>
+                <p>Learn at your own pace with unlimited access forever.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-medal"></i></div>
+                <h4>Global Certification</h4>
+                <p>Get recognized industry certificates for every course.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-video"></i></div>
+                <h4>HD Quality Videos</h4>
+                <p>Crystal clear 4K lessons from multiple camera angles.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-user-tie"></i></div>
+                <h4>1-on-1 Mentorship</h4>
+                <p>Personalized doubt sessions with master chefs.</p>
+            </div>
+        </div>
+
+        <div class="courses-grid">
+            @for (course of courses; track course.id) {
+            <div class="course-card" (click)="navigateToCourses()">
+                <div class="course-video-preview">
+                    <img [src]="course.image" [alt]="course.title" class="course-thumb">
+
+                    <!-- Lock Overlay -->
+                    <div class="lock-overlay">
+                        <div class="lock-icon">
+                            <i class="fas fa-lock"></i>
+                            <div class="lock-shine"></div>
+                        </div>
+                        <span class="unlock-text">Subscribe to Unlock</span>
+                    </div>
+                </div>
+                <div class="course-info">
+                    <h3 class="course-title">{{ course.title }}</h3>
+                    <p class="course-desc">{{ course.description }}</p>
+                    <div class="course-footer">
+                        <span class="course-status">
+                            <span class="premium-badge">PREMIUM</span>
+                        </span>
+                        <button class="unlock-btn">Unlock Now</button>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+
+        <!-- Persuasive Offer Banner -->
+        <div class="courses-offer-banner">
+            <div class="offer-content">
+                <div class="offer-badge">Hurry! Limited Slots</div>
+                <h3>Start Your Professional Baking Journey Today!</h3>
+                <p>Join over 5,000+ successful students and get <strong>Bonus PDF Recipe Books</strong> worth ₹9,999 for
+                    FREE with your first course subscription.</p>
+                <div class="offer-timer">
+                    <span class="timer-tag"><i class="fas fa-clock"></i> Offer ends soon</span>
+                    <button class="cta-primary-large" (click)="navigateToCourses()">Get Instant Access Now</button>
+                </div>
+            </div>
+            <div class="offer-image">
+                <img src="cake.png" alt="Special Offer">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section scroll-animate">
+    <div class="testimonials-container">
+        <h2 class="testimonials-title">What Our Students Say</h2>
+
+        <div class="testimonial-slider-wrapper">
+            <!-- Precise Centering: Move slider to 50% then shift by index and half card width -->
+            <div class="testimonial-slider"
+                [style.transform]="'translateX(calc(-' + activeTestimonialIndex + ' * (var(--card-width) + var(--card-margin) * 2) - (var(--card-width) / 2) - var(--card-margin)))'">
+                @for (testimonial of testimonials; track $index) {
+                <div class="testimonial-card" [class.active]="$index === activeTestimonialIndex">
+                    <div class="testimonial-image-container">
+                        <img [src]="testimonial.image" [alt]="testimonial.name">
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"{{ testimonial.text }}"</p>
+                        <h4 class="testimonial-name">{{ testimonial.name }}</h4>
+                        <span class="testimonial-role">{{ testimonial.role }}</span>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+
+        <div class="slider-dots">
+            @for (dot of testimonials; track $index) {
+            <button class="dot" [class.active]="$index === activeTestimonialIndex"
+                (click)="setTestimonial($index)"></button>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Main Footer -->
+<footer class="main-footer">
+    <div class="footer-container">
+        <!-- Left: Academy Info & Features -->
+        <div class="footer-column footer-left">
+            <h3 class="footer-heading">About Our Academy</h3>
+            <p class="footer-about">
+                Welcome to Cake Bakers & Academy, where passion meets professional excellence. We nurture talent and
+                transform hobbyists into master bakers with our expert-led, hands-on training.
+            </p>
+
+            <div class="footer-dropdown">
+                <button class="dropdown-trigger" (click)="toggleFeatures()">
+                    Core Features <i class="fas" [class.fa-chevron-down]="!isFeaturesOpen"
+                        [class.fa-chevron-up]="isFeaturesOpen"></i>
+                </button>
+                <div class="dropdown-content" [class.active]="isFeaturesOpen">
+                    <a class="dropdown-item"><i class="fas fa-certificate"></i> Certified Courses</a>
+                    <a class="dropdown-item"><i class="fas fa-hand-holding-heart"></i> Personal Mentorship</a>
+                    <a class="dropdown-item"><i class="fas fa-business-time"></i> Career Guidance</a>
+                    <a class="dropdown-item"><i class="fas fa-utensils"></i> Professional Toolkit</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center: Logo, Name & Thought -->
+        <div class="footer-column footer-center">
+            <div class="footer-brand">
+                <img src="logo.png" alt="Popinz Logo" class="footer-logo">
+                <h2 class="footer-brand-name">Cake Bakers & Academy</h2>
+            </div>
+            <div class="footer-quote">
+                <i class="fas fa-quote-left"></i>
+                <p>"Baking is an art, but it's also a science that connects souls through sweetness."</p>
+                <i class="fas fa-quote-right"></i>
+            </div>
+            <p class="footer-tagline">Since 2015 | Excellence in Every Bite</p>
+        </div>
+
+        <!-- Right: Contact & Social Media -->
+        <div class="footer-column footer-right">
+            <h3 class="footer-heading">Connect With Us</h3>
+            <div class="contact-items">
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+91 98765 43210</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@cakebakersindia.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>123 Baker's Street, New Delhi, India</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" class="social-icon insta"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon fb"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Copyright Area -->
+    <div class="footer-bottom">
+        <p>&copy; 2024 Popinz Cake Bakers & Academy. Handcrafted with <i class="fas fa-heart"></i> by Data Matex Team.</p>
+    </div>
+</footer>
