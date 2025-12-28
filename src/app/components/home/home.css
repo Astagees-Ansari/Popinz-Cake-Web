@@ -590,24 +590,53 @@
 /* Decorative Cake Images */
 .decorative-cake {
     position: absolute;
-    width: 150px;
+    width: 140px;
+    /* Kept small as requested */
     height: auto;
-    opacity: 0.3;
+    opacity: 0.35;
     z-index: 0;
     animation: floatTilt 4s ease-in-out infinite;
+    mix-blend-mode: multiply;
+    /* Removes white background patches */
+    pointer-events: none;
+    filter: contrast(1.1);
 }
 
 .cake-left {
-    top: 10%;
-    left: -5%;
+    top: 5%;
+    left: -2%;
     transform: rotate(-15deg);
 }
 
 .cake-right {
-    bottom: 10%;
-    right: -5%;
+    bottom: 5%;
+    right: -2%;
     transform: rotate(15deg);
     animation-delay: 2s;
+}
+
+.cake-top-right {
+    top: 0%;
+    right: 5%;
+    width: 100px;
+    transform: rotate(20deg);
+    animation-delay: 1s;
+}
+
+.cake-bottom-left {
+    bottom: -5%;
+    left: 5%;
+    width: 110px;
+    transform: rotate(-10deg);
+    animation-delay: 3s;
+}
+
+.cake-mid-right {
+    top: 45%;
+    right: -3%;
+    width: 130px;
+    transform: rotate(5deg);
+    animation-delay: 1.5s;
 }
 
 @keyframes floatTilt {
